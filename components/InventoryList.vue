@@ -19,6 +19,7 @@ export type Apartment = {
 export type Apartments = Apartment[]
 
 const props = defineProps<{inventories: Inventories}>()
+
 </script>
 
 <template>
