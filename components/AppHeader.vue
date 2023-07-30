@@ -29,12 +29,9 @@ const handleSearch = () => {
         </button>
       </div>
       <nav class="space-x-4">
-        <!-- <NuxtLink to="/" class="text-black hover:underline">
-          Apartments
-        </NuxtLink>
         <NuxtLink to="/inventories" class="text-black hover:underline">
           Inventory
-        </NuxtLink> -->
+        </NuxtLink>
       </nav>
     </div>
   </header>

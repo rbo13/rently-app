@@ -23,7 +23,6 @@ export type Apartments = Apartment[]
 const apartments = ref([] as Apartments)
 
 onMounted(() => {
-  console.log("Data file: ", data)
   apartments.value = data?.apartments
 })
 </script>

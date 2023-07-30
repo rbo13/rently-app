@@ -21,6 +21,7 @@ export type Apartments = Apartment[]
 
 const props = defineProps<{
   inventory: Inventory
+  preview: boolean
 }>()
 
 const updateInventory = ref({
@@ -51,7 +52,7 @@ const handleUpdateInventory = () => {
       <p class="text-gray-600 mb-4">
         Quantity: {{ props.inventory?.quantity }}
       </p>
-      <button class="btn bg-blue-500 text-white" @click="showForm = true">
+      <button v-if="!props.preview" class="btn bg-blue-500 text-white" @click="showForm = true">
         Update Inventory
       </button>
     </div>

@@ -52,6 +52,10 @@ const addNewInventory = () => {
     quantity: newInventory?.value?.quantity
   } as Inventory;
 
+  if (!upcomingInventory?.name) {
+    return
+  }
+
   // if an inventory has added
   // just update the quantity.
   const foundInventory = apartmentInventories.value.filter((inventory) => inventory?.name === upcomingInventory?.name)
@@ -60,7 +64,7 @@ const addNewInventory = () => {
     closeInventoryForm()
     return
   }
-  
+
   apartmentInventories.value.unshift(upcomingInventory)
   closeInventoryForm()
 }
@@ -112,15 +116,15 @@ const closeInventoryForm = () => {
               </select>
             </div>
             <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="newQuantity">New Quantity:</label>
-            <input
-              id="newQuantity"
-              v-model.number="newInventory.quantity"
-              type="number"
-              min="1"
-              class="form-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            >
-          </div>
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="newQuantity">New Quantity:</label>
+              <input
+                id="newQuantity"
+                v-model.number="newInventory.quantity"
+                type="number"
+                min="1"
+                class="form-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              >
+            </div>
 
             <!-- Buttons to submit or cancel the form -->
             <div class="flex justify-end mt-4 space-x-2">
@@ -129,7 +133,7 @@ const closeInventoryForm = () => {
             </div>
           </form>
         </div>
-        <InventoryList :inventories="apartmentInventories" />
+        <InventoryList :inventories="apartmentInventories" :preview="false" />
       </div>
     </div>
   </div>
