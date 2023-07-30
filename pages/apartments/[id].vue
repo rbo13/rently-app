@@ -46,13 +46,22 @@ onMounted(() => {
 })
 
 const addNewInventory = () => {
-  const inventory = {
+  const upcomingInventory = {
     id: apartmentInventories?.value.length + 1,
     name: newInventory?.value?.name,
     quantity: newInventory?.value?.quantity
   } as Inventory;
 
-  apartmentInventories.value.unshift(inventory)
+  // if an inventory has added
+  // just update the quantity.
+  const foundInventory = apartmentInventories.value.filter((inventory) => inventory?.name === upcomingInventory?.name)
+  if (foundInventory?.length > 0) {
+    foundInventory[0].quantity = (parseInt(foundInventory[0].quantity, 10) + parseInt(upcomingInventory?.quantity, 10)).toString()
+    closeInventoryForm()
+    return
+  }
+  
+  apartmentInventories.value.unshift(upcomingInventory)
   closeInventoryForm()
 }
 
