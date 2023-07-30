@@ -1,0 +1,43 @@
+{
+  "apartments": [
+    {
+      "id": 1,
+      "address": "Address One St.",
+      "floor": "1st Floor",
+      "doorNumber": "#001",
+      "inventories": [{
+        "id": 1,
+        "name": "refrigerator",
+        "quantity": "1"
+      }]
+    },
+    {
+      "id": 2,
+      "address": "Address Two St.",
+      "floor": "2nd Floor",
+      "doorNumber": "#002",
+      "inventories": [{
+        "id": 2,
+        "name": "air-conditioner",
+        "quantity": "3"
+      }]
+    }
+  ],
+  "inventories:": [
+    {
+      "id": 1,
+      "name": "refrigerator",
+      "imageUrl": ""
+    },
+    {
+      "id": 2,
+      "name": "air-conditioner",
+      "imageUrl": ""
+    },
+    {
+      "id": 3,
+      "name": "sofa",
+      "imageUrl": ""
+    }
+  ]
+}
