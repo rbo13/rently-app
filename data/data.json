@@ -8,6 +8,7 @@
       "inventories": [{
         "id": 1,
         "name": "refrigerator",
+        "imageUrl": "",
         "quantity": "1"
       }]
     },
@@ -16,11 +17,20 @@
       "address": "Address Two St.",
       "floor": "2nd Floor",
       "doorNumber": "#002",
-      "inventories": [{
-        "id": 2,
-        "name": "air-conditioner",
-        "quantity": "3"
-      }]
+      "inventories": [
+        {
+          "id": 2,
+          "name": "air-conditioner",
+          "imageUrl": "",
+          "quantity": "3"
+        },
+        {
+          "id": 1,
+          "name": "refrigerator",
+          "imageUrl": "",
+          "quantity": "3"
+        }
+      ]
     }
   ],
   "inventories:": [

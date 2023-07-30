@@ -13,7 +13,9 @@ const handleSearch = () => {
   <header class="bg-blue-500 py-4 px-8">
     <div class="flex items-center justify-between">
       <h1 class="text-black text-2xl font-bold">
-        Rently
+        <NuxtLink to="/">
+          Rently
+        </NuxtLink>
       </h1>
       <div class="flex items-center">
         <input

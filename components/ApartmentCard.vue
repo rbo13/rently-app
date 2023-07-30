@@ -31,7 +31,9 @@ const { apartment } = defineProps<{apartment: Apartment}>()
     <!-- Text in the center -->
     <div class="flex-1">
       <h2 class="text-xl font-semibold">
-        Address: {{ apartment?.address.toUpperCase() }}
+        <NuxtLink :to="`/apartments/${apartment?.id}`">
+          Address: {{ apartment?.address }}
+        </NuxtLink>
       </h2>
       <p class="text-gray-600">
         Floor: {{ apartment?.floor }}, Door #: {{ apartment?.doorNumber }}
