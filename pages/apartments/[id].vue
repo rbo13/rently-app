@@ -23,7 +23,8 @@ export type Apartment = {
 export type Apartments = Apartment[]
 
 const apartment = ref({} as Apartment)
-const inventories = ref([] as Inventories)
+const apartmentInventories = ref([] as Inventories)
+const inventoriesOption = ref([] as Inventories)
 const showForm = ref(false);
 
 // Form fields
@@ -36,20 +37,22 @@ const route = useRoute()
 const id = route.params.id[0]
 
 onMounted(() => {
+  inventoriesOption.value = data.inventories
+
   if (id) {
     apartment.value = data.apartments.find((apartment) => apartment?.id === parseInt(id, 10))
-    inventories.value = apartment?.value?.inventories
+    apartmentInventories.value = apartment?.value?.inventories
   }
 })
 
 const addNewInventory = () => {
   const inventory = {
-    id: inventories?.value.length + 1,
+    id: apartmentInventories?.value.length + 1,
     name: newInventory?.value?.name,
     quantity: newInventory?.value?.quantity
   } as Inventory;
 
-  inventories.value.unshift(inventory)
+  apartmentInventories.value.unshift(inventory)
   closeInventoryForm()
 }
 
@@ -93,14 +96,11 @@ const closeInventoryForm = () => {
           <!-- Form to create a new inventory -->
           <form @submit.prevent="addNewInventory">
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="newItem">New Item Name:</label>
-              <input
-                id="newItem"
-                v-model="newInventory.name"
-                class="form-input shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="New Item Name"
-              >
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="newItem">Select Inventory:</label>
+              <select id="newItem" v-model="newInventory.name" class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="" disabled selected>Select an item...</option>
+                <option v-for="option in inventoriesOption" :key="option?.id" :value="option?.name">{{ option?.name }}</option>
+              </select>
             </div>
             <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="newQuantity">New Quantity:</label>
@@ -120,7 +120,7 @@ const closeInventoryForm = () => {
             </div>
           </form>
         </div>
-        <InventoryList :inventories="inventories" />
+        <InventoryList :inventories="apartmentInventories" />
       </div>
     </div>
   </div>
